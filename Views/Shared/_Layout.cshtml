@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EmployeeLeavePortal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/EmployeeLeavePortal.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar elp-navbar navbar-expand-sm navbar-toggleable-sm mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EmployeeLeavePortal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @{ var currentController = ViewContext.RouteData.Values["controller"]?.ToString() ?? string.Empty; }
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @(currentController=="Dashboard"?"active":"")" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @(currentController=="Attendance"?"active":"")" asp-area="" asp-controller="Attendance" asp-action="Index">Attendance</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark @(currentController=="Leaves"?"active":"")" asp-area="" asp-controller="Leaves" asp-action="My">My Leaves</a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark @(currentController=="Departments"?"active":"")" asp-area="" asp-controller="Departments" asp-action="Index">Departments</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark @(currentController=="Employees"?"active":"")" asp-area="" asp-controller="Employees" asp-action="Index">Employees</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark @(currentController=="Leaves"?"active":"")" asp-area="" asp-controller="Leaves" asp-action="All">All Leaves</a>
+                                </li>
+                            }
+                            @if (User.IsInRole("Manager") || User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark @(currentController=="Leaves"?"active":"")" asp-area="" asp-controller="Leaves" asp-action="Pending">Pending</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @{ var peekToast = TempData.Peek("Toast") as string; var peekType = (TempData.Peek("ToastType") as string) ?? "info"; }
+            @if (!string.IsNullOrWhiteSpace(peekToast))
+            {
+                <div class="alert alert-@peekType shadow-sm" role="alert">
+                    @peekToast
+                </div>
+            }
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - EmployeeLeavePortal - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    @{ var toastMsg = TempData.Peek("Toast") as string; var toastType = (TempData.Peek("ToastType") as string) ?? "info"; }
+    @if (!string.IsNullOrWhiteSpace(toastMsg))
+    {
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 1080">
+            <div id="appToast" class="toast align-items-center text-bg-@toastType border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3500">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        @toastMsg
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <script>
+            (() => {
+                try {
+                    const el = document.getElementById('appToast');
+                    if (el && window.bootstrap && bootstrap.Toast) new bootstrap.Toast(el).show();
+                } catch {}
+            })();
+        </script>
+    }
+</body>
+</html>

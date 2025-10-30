@@ -1,0 +1,96 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Theme colors */
+:root {
+  --elp-primary: #5b6cff;
+  --elp-primary-dark: #3a49d6;
+  --elp-accent: #21c4d5;
+  --elp-success: #28a745;
+  --elp-warning: #f0ad4e;
+  --elp-danger: #dc3545;
+  --elp-bg: #f5f7ff;
+  --elp-surface: #ffffff;
+}
+
+/* Navbar gradient */
+.navbar.elp-navbar {
+  background: linear-gradient(90deg, var(--elp-primary), var(--elp-accent));
+}
+.navbar.elp-navbar .nav-link,
+.navbar.elp-navbar .navbar-brand {
+  color: #fff !important;
+}
+.navbar.elp-navbar .nav-link.active,
+.navbar.elp-navbar .nav-link:hover {
+  opacity: 0.9;
+  border-bottom: 2px solid rgba(255,255,255,.9);
+}
+
+/* Cards */
+.card {
+  border: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+.card.text-bg-light {
+  background: #f8f9ff !important;
+}
+
+/* Tables */
+.table thead th {
+  background: #f2f4ff;
+  border-bottom: 2px solid #e1e5ff;
+}
+.table tbody tr:hover {
+  background: #fafbff;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  --bs-table-accent-bg: #f9faff;
+}
+
+/* Badges for statuses */
+.badge-status {
+  padding: 0.45rem 0.6rem;
+  font-weight: 600;
+  letter-spacing: .2px;
+  color: #fff;
+}
+.badge-pending { background: var(--elp-warning); }
+.badge-approved { background: var(--elp-success); }
+.badge-rejected { background: var(--elp-danger); }
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--elp-primary);
+  border-color: var(--elp-primary);
+}
+.btn-primary:hover { background-color: var(--elp-primary-dark); border-color: var(--elp-primary-dark); }
+
+/* Links */
+a { color: var(--elp-primary); }
+a:hover { color: var(--elp-primary-dark); }
+
+/* Footer */
+.footer {
+  background: #eef1ff;
+}

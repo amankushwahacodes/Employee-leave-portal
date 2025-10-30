@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<h1 class="mt-3">Admin Dashboard</h1>
+<hr />
+<div class="row g-3">
+    <div class="col-md-3">
+        <div class="card text-bg-light"><div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="h6">Total Employees</div>
+                    <div class="display-6">@ViewBag.TotalEmployees</div>
+                </div>
+                <i class="bi bi-people-fill fs-1 text-primary"></i>
+            </div>
+        </div></div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-light"><div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="h6">Departments</div>
+                    <div class="display-6">@ViewBag.TotalDepartments</div>
+                </div>
+                <i class="bi bi-diagram-3-fill fs-1 text-info"></i>
+            </div>
+        </div></div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-light"><div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="h6">Pending Leaves</div>
+                    <div class="display-6">@ViewBag.PendingLeaves</div>
+                </div>
+                <i class="bi bi-hourglass-split fs-1 text-warning"></i>
+            </div>
+        </div></div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-bg-light"><div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="h6">Today's Attendance</div>
+                    <div class="display-6">@ViewBag.TodaysAttendance</div>
+                </div>
+                <i class="bi bi-clipboard-check fs-1 text-success"></i>
+            </div>
+        </div></div>
+    </div>
+</div>
+<div class="mt-3">
+    <a class="btn btn-outline-primary" asp-controller="Leaves" asp-action="All">View All Leaves</a>
+    <a class="btn btn-outline-secondary" asp-controller="Leaves" asp-action="Pending">Pending Approvals</a>
+</div>

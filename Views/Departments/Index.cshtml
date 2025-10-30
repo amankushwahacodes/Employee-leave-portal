@@ -1,0 +1,29 @@
+@model IEnumerable<EmployeeLeavePortal.Models.Department>
+@{
+    ViewData["Title"] = "Departments";
+}
+<h1 class="mt-3">Departments</h1>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.DepartmentId">Details</a>
+                    <a class="btn btn-sm btn-secondary" asp-action="Edit" asp-route-id="@item.DepartmentId">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.DepartmentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

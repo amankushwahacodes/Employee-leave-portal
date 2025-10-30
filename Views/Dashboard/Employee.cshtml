@@ -1,0 +1,46 @@
+@using EmployeeLeavePortal.Models
+@{
+    ViewData["Title"] = "My Dashboard";
+    var balances = ViewBag.Balances as List<LeaveBalance> ?? new List<LeaveBalance>();
+    var recent = ViewBag.RecentAttendance as List<EmployeeLeavePortal.Models.AttendanceRecord> ?? new List<EmployeeLeavePortal.Models.AttendanceRecord>();
+}
+<h1 class="mt-3">My Dashboard</h1>
+<hr />
+<div class="row g-3">
+    <div class="col-md-3">
+        <div class="card text-bg-light"><div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="h6">My Pending Leaves</div>
+                    <div class="display-6">@ViewBag.MyPending</div>
+                </div>
+                <i class="bi bi-hourglass-split fs-1 text-warning"></i>
+            </div>
+        </div></div>
+    </div>
+</div>
+<h4 class="mt-4">Leave Balances</h4>
+<table class="table table-sm table-striped w-auto">
+    <thead><tr><th>Type</th><th>Total</th><th>Used</th></tr></thead>
+    <tbody>
+        @foreach (var b in balances)
+        {
+            <tr><td>@b.LeaveType</td><td>@b.TotalAllowed</td><td>@b.Used</td></tr>
+        }
+    </tbody>
+</table>
+<h4 class="mt-4">Recent Attendance</h4>
+<table class="table table-sm table-striped">
+    <thead><tr><th>Date</th><th>In</th><th>Out</th><th>Hours</th></tr></thead>
+    <tbody>
+        @foreach (var a in recent)
+        {
+            <tr>
+                <td>@a.Date.ToString("dd MMM yyyy")</td>
+                <td>@(a.CheckIn.HasValue ? a.CheckIn.Value.ToString("HH\\:mm") : "-")</td>
+                <td>@(a.CheckOut.HasValue ? a.CheckOut.Value.ToString("HH\\:mm") : "-")</td>
+                <td>@String.Format("{0:0.##}", a.HoursWorked)</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+@model EmployeeLeavePortal.Models.AttendanceRecord
+@{
+    ViewData["Title"] = "My Attendance";
+    var today = DateOnly.FromDateTime(DateTime.Now);
+}
+<h1 class="mt-3">My Attendance - @today.ToString("dd MMM yyyy")</h1>
+<hr />
+@if (Model == null)
+{
+    <div class="alert alert-info">You haven't checked in today.</div>
+    <form asp-action="CheckIn" method="post">
+        <button type="submit" class="btn btn-success">Check In</button>
+        <a asp-action="History" class="btn btn-secondary">History</a>
+    </form>
+}
+else if (Model.CheckOut == null)
+{
+    <div class="mb-3">
+        <strong>Checked in:</strong> @(Model.CheckIn.HasValue ? Model.CheckIn.Value.ToString("HH\\:mm") : "-")
+    </div>
+    <form asp-action="CheckOut" method="post">
+        <button type="submit" class="btn btn-danger">Check Out</button>
+        <a asp-action="History" class="btn btn-secondary">History</a>
+    </form>
+}
+else
+{
+    <div class="alert alert-success">You have checked out.</div>
+    <dl class="row">
+        <dt class="col-sm-2">Check In</dt>
+        <dd class="col-sm-10">@(Model.CheckIn.HasValue ? Model.CheckIn.Value.ToString("HH\\:mm") : "-")</dd>
+        <dt class="col-sm-2">Check Out</dt>
+        <dd class="col-sm-10">@(Model.CheckOut.HasValue ? Model.CheckOut.Value.ToString("HH\\:mm") : "-")</dd>
+        <dt class="col-sm-2">Hours Worked</dt>
+        <dd class="col-sm-10">@String.Format("{0:0.##}", Model.HoursWorked)</dd>
+    </dl>
+    <a asp-action="History" class="btn btn-secondary">View History</a>
+}

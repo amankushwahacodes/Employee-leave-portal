@@ -1,0 +1,28 @@
+@model IEnumerable<EmployeeLeavePortal.Models.AttendanceRecord>
+@{
+    ViewData["Title"] = "My Attendance History";
+}
+<h1 class="mt-3">My Attendance History</h1>
+<hr />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Hours Worked</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Date.ToString("dd MMM yyyy")</td>
+            <td>@(item.CheckIn.HasValue ? item.CheckIn.Value.ToString("HH\\:mm") : "-")</td>
+            <td>@(item.CheckOut.HasValue ? item.CheckOut.Value.ToString("HH\\:mm") : "-")</td>
+            <td>@item.HoursWorked</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-secondary">Back to Today</a>
