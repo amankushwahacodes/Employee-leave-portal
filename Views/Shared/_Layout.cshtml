@@ -59,28 +59,38 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @{ var peekToast = TempData.Peek("Toast") as string; var peekType = (TempData.Peek("ToastType") as string) ?? "info"; }
-            @if (!string.IsNullOrWhiteSpace(peekToast))
-            {
-                <div class="alert alert-@peekType shadow-sm" role="alert">
-                    @peekToast
-                </div>
-            }
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - EmployeeLeavePortal - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-    @{ var toastMsg = TempData.Peek("Toast") as string; var toastType = (TempData.Peek("ToastType") as string) ?? "info"; }
+    <script>
+        (function () {
+            try {
+                var path = (window.location.pathname || '').toLowerCase();
+                if (path.includes('/identity/account/login')) {
+                    var ext = document.getElementById('external-account');
+                    if (ext && ext.closest) {
+                        var sec = ext.closest('section') || ext;
+                        sec.style.display = 'none';
+                    }
+                    // Fallback: hide any h4 with the default external login title
+                    var heads = document.querySelectorAll('h4');
+                    heads.forEach(function(h){
+                        if ((h.textContent || '').trim().toLowerCase() === 'use another service to log in.') {
+                            var sec2 = h.closest('section') || h.parentElement;
+                            if (sec2) sec2.style.display = 'none';
+                        }
+                    });
+                }
+            } catch (_) { }
+        })();
+    </script>
+
+    @{ var toastMsg = TempData["Toast"] as string; var toastType = (TempData["ToastType"] as string) ?? "info"; }
     @if (!string.IsNullOrWhiteSpace(toastMsg))
     {
         <div class="position-fixed top-0 end-0 p-3" style="z-index: 1080">

@@ -448,3 +448,4 @@ C:\Aman\CLG\sem5\dotnet\EmployeeLeavePortal\bin\Debug\net8.0\refs\System.Xml.Xml
 C:\Aman\CLG\sem5\dotnet\EmployeeLeavePortal\bin\Debug\net8.0\refs\System.Xml.XPath.dll
 C:\Aman\CLG\sem5\dotnet\EmployeeLeavePortal\bin\Debug\net8.0\refs\System.Xml.XPath.XDocument.dll
 C:\Aman\CLG\sem5\dotnet\EmployeeLeavePortal\bin\Debug\net8.0\refs\WindowsBase.dll
+C:\Aman\CLG\sem5\dotnet\EmployeeLeavePortal\obj\Debug\net8.0\EmployeeLeavePortal.sourcelink.json

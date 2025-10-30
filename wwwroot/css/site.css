@@ -1,3 +1,35 @@
+/* Login page only */
+.login-page {
+  background: linear-gradient(135deg, rgba(91,108,255,.15), rgba(33,196,213,.15));
+  min-height: 100vh;
+}
+.login-page header { display: none; }
+.login-page .container {
+  max-width: 520px;
+}
+.login-page main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.login-page main > * {
+  width: 100%;
+}
+.login-page form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: .75rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,.08);
+  max-width: 520px;
+  margin: 0 auto;
+}
+.login-page .btn-primary { width: 100%; padding: .65rem 1rem; }
+.login-page a { color: var(--elp-primary); }
+.login-page a:hover { color: var(--elp-primary-dark); }
+.login-page .form-control:focus { border-color: var(--elp-primary); box-shadow: 0 0 0 .2rem rgba(91,108,255,.15); }
 html {
   font-size: 14px;
 }
@@ -78,6 +110,56 @@ body {
 .badge-pending { background: var(--elp-warning); }
 .badge-approved { background: var(--elp-success); }
 .badge-rejected { background: var(--elp-danger); }
+
+/* Auth pages (Login/Register/Forgot) */
+.auth-page {
+  background: linear-gradient(135deg, rgba(91,108,255,.15), rgba(33,196,213,.15));
+  min-height: 100vh;
+}
+.auth-page header,
+.auth-page footer { display: none; }
+.auth-page .container {
+  max-width: 520px;
+}
+.auth-page main {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.auth-page main > * {
+  width: 100%;
+}
+.auth-page form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: .75rem;
+  box-shadow: 0 16px 40px rgba(0,0,0,.08);
+}
+.auth-page h1, .auth-page h2, .auth-page h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.auth-page .btn-primary {
+  width: 100%;
+  padding: .65rem 1rem;
+}
+.auth-page a {
+  color: var(--elp-primary);
+}
+.auth-page a:hover {
+  color: var(--elp-primary-dark);
+}
+.auth-page .form-floating > label,
+.auth-page .form-label {
+  color: #6b7280;
+}
+.auth-page .form-control:focus {
+  border-color: var(--elp-primary);
+  box-shadow: 0 0 0 .2rem rgba(91,108,255,.15);
+}
 
 /* Buttons */
 .btn-primary {

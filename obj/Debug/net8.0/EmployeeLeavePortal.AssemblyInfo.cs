@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmployeeLeavePortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+557c7bae700a4e8d9f26e8fe9dfb90768930dfa2")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmployeeLeavePortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmployeeLeavePortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
