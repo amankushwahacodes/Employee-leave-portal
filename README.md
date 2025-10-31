@@ -57,3 +57,13 @@ Notes:
 
 ## License
 This project is for educational/demo purposes.
+
+## Screenshots
+![Login](docs/images/Login.png "Login Page")
+![Attendance](docs/images/Attendance.png "Employee Attendance")
+![Dashboard](docs/images/ManagerDashboard.png "Manager Dashboard")
+![Admin Employees](docs/images/AdminEmp.png "Admin Panel")
+![Admin Departments](docs/images/AdminDept.png "Admin Panel")
+![Attendance](docs/images/MyLeaves.png "Employee Requests")
+![Leave Application](docs/images/LeaveApplication.png "Leave Application")
+![Leave Approval](docs/images/ManagerLeaveApproval.png "Manager Leave Approval")
